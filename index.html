@@ -23,22 +23,8 @@
             <div class="stat-label">Total Asientos (Fijos + Rotativos)</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">
-                Puestos Fijos: <span id="fixedSeatsDisplay">0</span>
-                <input type="number" id="fixedSeatsInput" min="0" value="0" onchange="updateOverallFixedSeats()">
-            </div>
-            <div class="stat-label">Puestos Fijos</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">
-                Puestos Rotativos: <span id="rotativeSeatsDisplay">0</span>
-                <input type="number" id="rotativeSeatsInput" min="0" value="0" onchange="updateOverallRotativeSeats()">
-            </div>
-            <div class="stat-label">Puestos Rotativos</div>
-        </div>
-        <div class="stat-card">
             <div class="stat-number" id="availableSeats">0</div>
-            <div class="stat-label">Puestos Disponibles</div>
+            <div class="stat-label">Puestos Disponibles Hoy</div>
         </div>
         <div class="stat-card">
             <div class="stat-number" id="todayEquipment">0</div>
@@ -47,6 +33,34 @@
     </div>
 
     <div class="main-content">
+        <div class="office-section">
+            <div class="office-header">
+                <h2 class="office-title">Oficina 701</h2>
+                <div class="fixed-seats">
+                    Rotativos: <span id="rotativeSeats701">0</span>
+                    <input type="number" id="rotativeSeatsInput701" min="0" value="0" onchange="updateOfficeSeats(1, 'rotative', this.value)">
+                </div>
+                <div class="fixed-seats">
+                    Fijos: <span id="fixedSeats701">0</span>
+                    <input type="number" id="fixedSeatsInput701" min="0" value="0" onchange="updateOfficeSeats(1, 'fixed', this.value)">
+                </div>
+            </div>
+            </div>
+
+        <div class="office-section">
+            <div class="office-header">
+                <h2 class="office-title">Oficina 702</h2>
+                <div class="fixed-seats">
+                    Rotativos: <span id="rotativeSeats702">0</span>
+                    <input type="number" id="rotativeSeatsInput702" min="0" value="0" onchange="updateOfficeSeats(2, 'rotative', this.value)">
+                </div>
+                <div class="fixed-seats">
+                    Fijos: <span id="fixedSeats702">0</span>
+                    <input type="number" id="fixedSeatsInput702" min="0" value="0" onchange="updateOfficeSeats(2, 'fixed', this.value)">
+                </div>
+            </div>
+            </div>
+
         <div class="office-section" style="background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%); border: 2px solid #27ae60;">
             <div class="office-header">
                 <h2 class="office-title">Equipos Programados para Hoy</h2>
@@ -98,6 +112,13 @@
                 <h3 style="color: #8e44ad; margin-bottom: 15px;">➕ Programar Nuevo Equipo</h3>
                 <div class="form-row">
                     <div class="form-group">
+                        <label>Oficina:</label>
+                        <select id="selectOffice">
+                            <option value="1">Oficina 701</option>
+                            <option value="2">Oficina 702</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Nombre del Equipo:</label>
                         <input type="text" id="companyName" placeholder="Ej: Equipo de Desarrollo">
                     </div>
@@ -116,7 +137,7 @@
                         <label>Personas:</label>
                         <input type="number" id="companyPeople" min="1" value="1">
                     </div>
-                    <button class="btn" onclick="addCompanyTeam()">Agregar Equipo</button>
+                    <button class="btn" onclick="addEquipment()">Agregar Equipo</button>
                 </div>
             </div>
         </div>
