@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gestor de Equipos de Oficinas FLYR</title>
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Gestor de Equipos de Oficinas FLYR</h1>
+        <div class="date-display" id="currentDate"></div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number" id="totalOffices">2</div>
+            <div class="stat-label">Total Oficinas</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="totalSeats">0</div>
+            <div class="stat-label">Total Asientos (Fijos + Rotativos)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">
+                Puestos Fijos: <span id="fixedSeatsDisplay">0</span>
+                <input type="number" id="fixedSeatsInput" min="0" value="0" onchange="updateOverallFixedSeats()">
+            </div>
+            <div class="stat-label">Puestos Fijos</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">
+                Puestos Rotativos: <span id="rotativeSeatsDisplay">0</span>
+                <input type="number" id="rotativeSeatsInput" min="0" value="0" onchange="updateOverallRotativeSeats()">
+            </div>
+            <div class="stat-label">Puestos Rotativos</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="availableSeats">0</div>
+            <div class="stat-label">Puestos Disponibles</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="todayEquipment">0</div>
+            <div class="stat-label">Equipos Hoy</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="office-section" style="background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%); border: 2px solid #27ae60;">
+            <div class="office-header">
+                <h2 class="office-title">Equipos Programados para Hoy</h2>
+                <div>
+                    <span style="font-weight: bold; color: #27ae60;">Equipos:</span>
+                    <span id="todayEquipmentDetail">0</span>
+                    &nbsp;|&nbsp;
+                    <span style="font-weight: bold; color: #27ae60;">Personas:</span>
+                    <span id="todayPeople">0</span>
+                </div>
+            </div>
+            <div class="equipment-grid" id="todayEquipmentList"></div>
+        </div>
+
+        <div class="office-section" style="background: linear-gradient(135deg, #e8f4fd 0%, #f0f9ff 100%); border: 2px solid #3498db;">
+            <div class="office-header">
+                <h2 class="office-title">Equipos Programados - Próximos Días</h2>
+                <div>
+                    <span style="font-weight: bold; color: #3498db;">Equipos:</span>
+                    <span id="tomorrowCount">0</span> 
+                    &nbsp;|&nbsp;
+                    <span style="font-weight: bold; color: #3498db;">Personas:</span>
+                    <span id="tomorrowPeople">0</span>
+                </div>
+            </div>
+            <div class="equipment-grid" id="tomorrowEquipmentList"></div>
+        </div>
+
+        <div class="office-section" style="background: linear-gradient(135deg, #fef9e7 0%, #fffbf0 100%); border: 2px solid #f1c40f;">
+            <div class="office-header">
+                <h2 class="office-title">Equipos De Días Anteriores</h2>
+                <div>
+                    <span style="font-weight: bold; color: #f39c12;">Equipos:</span>
+                    <span id="yesterdayCount">0</span>
+                    &nbsp;|&nbsp;
+                    <span style="font-weight: bold; color: #f39c12;">Personas:</span>
+                    <span id="yesterdayPeople">0</span>
+                </div>
+            </div>
+            <div class="equipment-grid" id="yesterdayEquipmentList"></div>
+        </div>
+
+        <div class="company-teams-section">
+            <h2>Gestión de Equipos</h2>
+            
+            <div id="companyTeamsList"></div>
+            
+            <div class="company-form add-equipment-form">
+                <h3 style="color: #8e44ad; margin-bottom: 15px;">➕ Programar Nuevo Equipo</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombre del Equipo:</label>
+                        <input type="text" id="companyName" placeholder="Ej: Equipo de Desarrollo">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de Presentación:</label>
+                        <input type="date" id="companyDate">
+                    </div>
+                     <div class="form-group">
+                       <label>Estado:</label>
+                        <select id="companyStatus">
+                            <option value="presente">Presente</option>
+                            <option value="ausente">Ausente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Personas:</label>
+                        <input type="number" id="companyPeople" min="1" value="1">
+                    </div>
+                    <button class="btn" onclick="addCompanyTeam()">Agregar Equipo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
